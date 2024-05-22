@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Image, TextInput, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Image, TextInput, ScrollView, Button, Switch } from "react-native";
 
 
 export default function HomeScreen() {
@@ -20,7 +20,7 @@ export default function HomeScreen() {
 
       <TextInput placeholder="이름을 입력해주세요." />
 
-      <ScrollView>
+      {/* <ScrollView>
         <Image 
           source={require('../../assets/images/favicon.png')}
           style={styles.icon_image}
@@ -78,7 +78,13 @@ export default function HomeScreen() {
           style={styles.icon_image}
         />
         
-      </ScrollView>
+      </ScrollView> */}
+      <Button title="Click Me!" onPress={() => {
+        console.log("버튼 클릭!");
+      }}/>
+
+      <Switch value={true} />
+      <Switch value={false} />
     </View>
   );
 }
