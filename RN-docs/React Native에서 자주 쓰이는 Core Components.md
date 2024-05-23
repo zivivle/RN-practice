@@ -28,11 +28,16 @@ React Native에는 컨트롤부터 활동 표시기까지 모든 것에 대한 �
 
 ### 터치가 가능해야하는 공간의 경우 TouchableOpacity
 ```js
-<TouchableOpacity onPress={props.onPress}>
+<TouchableOpacity 
+    onPress={props.onPress} 
+    activeOpacity={1}
+>
     ...
 </TouchableOpacity>
 ```
+- 클릭했을 때 opacity를 주고싶지 않다면 activeOpacity를 1로 주면된다.
 <br/>
+
 
 ### 스크롤 되는 부분의 경우 ScrollView 
 ```js
@@ -47,6 +52,56 @@ const bottomSpace = getBottomSpace();
 ```
 - "showVerticalScrollIndicator={false}"로 설정하면 스크롤바를 사라지게할수 있음
 - const bottomSpace = getBottomSpace();를 통해서 bottomSpace를 가져올 수 있음
+
+<br/>
+
+### 데이터가 많을 경우 ScrollView보다 FlatList 사용하기!
+ScrollView보다 FlatList가 데이터가 많을 경우 성능이 더 좋다
+```js
+const ItemSeparatorComponent = () => <Margin height={13} />
+const renderItem = ({ item }) => (
+    <View>
+        <Profile 
+            uri={item.uri}
+            name={item.name}
+            introduction={item.introduction}
+        />
+        <Margin height={13}>
+    </View>
+) 
+const ListHeaderComponent = () => (
+    <View>
+        ...Header로 보여질 요소들
+    </View>
+)
+const ListFooterComponent = () => (
+    <TabBar selectedTabIdx={selectedTabIdx} setSelectedTabIdx={setSelectedTabIdx} />
+)
+
+<View>
+    <FlatList
+        data={isOpened ? listData : []}
+        keyExtractor={(_, index) => index}
+        stickHeaderIndices={[0]}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        renderItem={renderItem}
+        ListHeaderComponent={ListHeaderComponent}
+        ListFooterComponent={ListFooterComponent}
+    />
+</View>
+```
+- data에 renderItem에 map으로 전달할 데이터를 전
+- keyExtractor에는 key로 전달할 값을 전달할 수 있다 index도 가능하고 data의 특정 값도 가능하다! 
+- ItemSeparatorComponent는 반복되어 보여질 renderItem 사이사이에 보여줄 컴포넌트를 전달하면 된다. margin에 대한 컴포넌트를 전달하기도 한다.
+- ListHeaderComponent는 해당 FlatList의 헤더 부분에 보여질 컴포넌트를 전달할 수 있다.
+    - 만약 ListHeaderComponent를 고정하고 싶다면 stickHeaderIndices={[0]} 속성을 전달하면 된다.
+    - 전달하는 index값은 고정할 헤더의 index값을 넣어주면 된다.
+- ListFooterComponent는 해당 FlatList의 푸터 부분에 보여질 컴포넌트를 전달할 수 있다.
+- renderItem은 data로 반복해서 보여질 UI요소를 지정해 전달한다
+
+- **data={isOpened ? listData : []}** 이런 방식으로 FlatList 데이터를 보여주고 안보여주는 기능을 생각해볼 수 있다.
+
+
 
 <br/>
 
@@ -68,3 +123,11 @@ const bottomSpace = getBottomSpace();
 
 ### paddingHorizontal 이란?
 : paddingHorizontal은 React Native 에서 사용되는 스타일 속성으로, 요소의 좌우에 동일한 크기의 패딩을 적용할 때 사용된다. 이 속성은 CSS의 padding-right와 padding-left를 한번에 설정할 수 있도록 도와준다.
+
+### paddingVertical 이란?
+: paddingVertical은 React Native에서 사용되는 스타일 속성으로, 요소의 위아래에 동일한 크기의 패딩을 적용할 때 사용된다. 이 속성은 CSS의 padding-top과 padding-bottom을 한번에 설정할 수 있도록 도와준다.
+
+### borderTopWidth, borderBottomWidth, borderTopColor, borderBottomColor 스타일도 존재한다!
+
+
+
