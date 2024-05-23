@@ -31,11 +31,13 @@ React Native에는 컨트롤부터 활동 표시기까지 모든 것에 대한 �
 <TouchableOpacity 
     onPress={props.onPress} 
     activeOpacity={1}
+    hitSlop={{ top: 15, bottom: 15 }}
 >
     ...
 </TouchableOpacity>
 ```
 - 클릭했을 때 opacity를 주고싶지 않다면 activeOpacity를 1로 주면된다.
+- TouchableOpacity의 css 공간을 건드리지 않으면서 터치 가능한 공간만 넓히고 싶다면 hitSlop 속성을 사용하면된다.
 <br/>
 
 
