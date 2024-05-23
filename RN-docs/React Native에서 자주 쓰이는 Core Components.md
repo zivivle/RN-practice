@@ -22,3 +22,49 @@ React Native에는 컨트롤부터 활동 표시기까지 모든 것에 대한 �
 주로 다음 핵심 구성 요소를 사용하여 작업하게 된다.
 
 ![alt text](image-1.png)
+
+<br/>
+
+
+### 터치가 가능해야하는 공간의 경우 TouchableOpacity
+```js
+<TouchableOpacity onPress={props.onPress}>
+    ...
+</TouchableOpacity>
+```
+<br/>
+
+### 스크롤 되는 부분의 경우 ScrollView 
+```js
+const bottomSpace = getBottomSpace();
+
+<ScrollView 
+    showVerticalScrollIndicator={false} 
+    contentContainerStyle={{ paddingBottom: bottomSpace }}
+>
+    ...
+</ScrollView>
+```
+- "showVerticalScrollIndicator={false}"로 설정하면 스크롤바를 사라지게할수 있음
+- const bottomSpace = getBottomSpace();를 통해서 bottomSpace를 가져올 수 있음
+
+<br/>
+
+### 외부 컨테이너 스타일과 내부 콘텐츠 스타일 적용
+
+1. **외부 컨테이너 스타일 (style):**
+
+    ScrollView의 외부 컨테이너에 적용된다.
+    ScrollView 자체의 크기, 배경색, 테두리 등을 설정하는 데 사용된다.
+    ScrollView가 스크롤 영역을 차지하는 방식을 제어한다.
+
+2. **내부 콘텐츠 스타일 (contentContainerStyle)**:
+
+    ScrollView 내부의 콘텐츠 컨테이너에 적용된다.
+    스크롤 가능한 콘텐츠의 레이아웃을 설정하는 데 사용된다.
+    콘텐츠의 패딩, 마진, 배경색, 정렬 등을 설정할 수 있다.
+
+<br/>
+
+### paddingHorizontal 이란?
+: paddingHorizontal은 React Native 에서 사용되는 스타일 속성으로, 요소의 좌우에 동일한 크기의 패딩을 적용할 때 사용된다. 이 속성은 CSS의 padding-right와 padding-left를 한번에 설정할 수 있도록 도와준다.

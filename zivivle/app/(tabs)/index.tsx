@@ -1,27 +1,16 @@
-import { useState } from "react";
-import { Text, View, StyleSheet, Image, TextInput, ScrollView, Button, Switch } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { View, StyleSheet, Image } from "react-native";
 
+const PlaceholderImage = require('../../assets/images/favicon.png')
 
 export default function HomeScreen() {
-  const [value, setValue] = useState(false);
-  const [text, setText] = useState("");
 
   return (
     <View style={styles.container}>
-      <Button title="Click Me!" onPress={() => {
-        console.log("버튼 클릭!");
-      }}/>
-
-      <Switch value={value} onValueChange={v => {
-        setValue(v)
-      }}/>
-      <TextInput 
-        value={text} 
-        onChangeText={v => {
-          setText(v)
-        }}
-        style={{ backgroundColor: "pink", width: "100%" }}
-      />
+      <View style={styles.imageContainer}>
+        <Image source={PlaceholderImage} style={styles.image} />
+      </View>
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -29,16 +18,16 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#25292e',
+    alignItems: 'center',
   },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
+  imageContainer: {
+    flex: 1,
+    paddingTop: 58,
   },
-  icon_image: {
-    width: 50,
-    height: 50,
-  }
+  image: {
+    width: 320,
+    height: 440,
+    borderRadius: 18,
+  },
 })
