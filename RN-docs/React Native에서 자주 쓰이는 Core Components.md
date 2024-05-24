@@ -103,6 +103,19 @@ const ListFooterComponent = () => (
 
 - **data={isOpened ? listData : []}** 이런 방식으로 FlatList 데이터를 보여주고 안보여주는 기능을 생각해볼 수 있다.
 
+<br/>
+
+### 안전한 영역을 지정할 수 있는 SafeAreaView
+
+```js
+
+<SafeAreaView>
+    <Calculator />
+</SafeAreaView>
+
+```
+- SafeAreaView는 장치의 안전 영역 경계 내에서 콘텐츠가 렌더링되도록 보장한다. 
+- 안전하지 않은 영역을 자동으로 처리하여, 콘텐츠가 노치나 상태 바, 홈 인티케이터 등에 가려질 수 있는 화면 영역을 처리하는 방식에서 View와 차이가 있다.
 
 
 <br/>
