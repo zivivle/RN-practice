@@ -89,6 +89,7 @@ const ListFooterComponent = () => (
         renderItem={renderItem}
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={ListFooterComponent}
+        numColumns={7}
     />
 </View>
 ```
@@ -100,6 +101,7 @@ const ListFooterComponent = () => (
     - 전달하는 index값은 고정할 헤더의 index값을 넣어주면 된다.
 - ListFooterComponent는 해당 FlatList의 푸터 부분에 보여질 컴포넌트를 전달할 수 있다.
 - renderItem은 data로 반복해서 보여질 UI요소를 지정해 전달한다
+- numColumns로 column에 보여줄 data의 개수도 설정할 수 있다.
 
 - **data={isOpened ? listData : []}** 이런 방식으로 FlatList 데이터를 보여주고 안보여주는 기능을 생각해볼 수 있다.
 
