@@ -91,6 +91,7 @@ const ListFooterComponent = () => (
         ListFooterComponent={ListFooterComponent}
         numColumns={7}
         scrollEnabled={true}
+        horizontal
     />
 </View>
 ```
@@ -104,6 +105,7 @@ const ListFooterComponent = () => (
 - renderItem은 data로 반복해서 보여질 UI요소를 지정해 전달한다
 - numColumns로 column에 보여줄 data의 개수도 설정할 수 있다.
 - scrollEnabled로 스크롤처리를 막을 수 있다.
+- FlatList는 기본적으로 세로 정렬이지만 horizontal 속성을 넘겨주면 가로로 정렬해줄 수 있다.
 
 - **data={isOpened ? listData : []}** 이런 방식으로 FlatList 데이터를 보여주고 안보여주는 기능을 생각해볼 수 있다.
 
@@ -149,4 +151,23 @@ const ListFooterComponent = () => (
 ### borderTopWidth, borderBottomWidth, borderTopColor, borderBottomColor 스타일도 존재한다!
 
 
+### Image 요소
+```js
+<Image 
+    source={image?.uri}
+    style={{ width: 100, height: 100, backgroundColor: "white" }}
+    resizeMode="contain"
+/>
+```
+
+- source: 표시할 이미지의 소스를 지정한다. uri는 원격 이미지 또는 로컬 파일 경로를 포함할 수 있는 문자열이다.
+- resizeMode
+	: 이미지의 크기 조정 방식을 지정합니다.
+	
+    - 옵션
+	    - cover: 이미지가 주어진 영역을 채우도록 조정되지만, 비율이 유지되지 않을 수 있습니다.
+	    - contain: 이미지의 비율을 유지하면서 주어진 영역 내에 맞춥니다.
+	    - stretch: 이미지의 비율을 무시하고 주어진 크기에 맞춥니다.
+	    - repeat: 이미지를 타일 형식으로 반복하여 채웁니다.
+	    - center: 이미지를 비율을 유지하면서 중앙에 위치시킵니다.
 
