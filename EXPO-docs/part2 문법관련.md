@@ -96,3 +96,15 @@ Modal 컴포넌트는 React Native에서 뷰 위에 콘텐츠를 표시하는 �
 ```
 위  코드와 같은 구조일 경우 안쪽의 Pressable을 눌렀을 경우 onPressBackdrop가 발생하지 않는다 :)
 
+
+### 광고를 넣고 싶다면 구글 admob? -> expo의 한계점
+
+### 현재 플랫폼 선택할 수 있는 메서드 Platform.select
+```js
+const UNIT_ID = Platform.select({
+    ios: __DEV__ ? "dev_abc" : "abc",
+    android: ___DEV__ ? "dev_ccd" : "ccd",
+})
+```
+
+### 가로길이가 제각각인 화면별 대응
