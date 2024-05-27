@@ -9,9 +9,9 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.imageContainer}>
-        <Text style={styles.text}>text</Text>
+        <Text style={styles.text}>test</Text>
         <Image source={PlaceholderImage} style={styles.image} />
-        <Text style={styles.text}>tes</Text>
+        <Text style={styles.text}>test</Text>
       </SafeAreaView>
       <StatusBar style="auto" />
     </View>
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
   text: {
-    color: 'white',
+    color: 'pink',
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 16,
