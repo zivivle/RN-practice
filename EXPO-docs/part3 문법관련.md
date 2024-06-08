@@ -181,3 +181,39 @@ export default const Loading = () => {
 
 ```
 
+
+## 커스텀 폰트 적용하기
+### 1. expo font 설치
+```
+npx expo install expo-font
+```
+
+### 2. useFont 사용하기
+```js
+import { useFont } from 'expo-font' 
+import * as SplashScreen from 'expo-splash-screen'
+
+export default function App() {
+    const [fontsLoaded] = useFonts({
+        'Inter-Black': require('./assets/fonts/Inter-Black.otf)
+    })
+
+    useEffect(() => {
+        if(locale !== null && fontsLoaded){
+            SplashScreen.hideAsync();
+        }
+    }, [locale, fontsLoaded])
+
+    ...
+} 
+```
+-> 처음 메인 페이지가 로드되었을 때 폰트를 다운받고 그동안 SplashScreen을 띄워준다
+
+```js
+const styles = StyleSheet.create({
+    mainText: {
+        fontFamily: 'Inter-Black'
+    }
+})
+```
+-> 그리고 원하는 영역에 해당 폰트를 지정해준다
