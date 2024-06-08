@@ -44,3 +44,35 @@ SectionList의 경우 data를 다음처럼 전달할 수 있어 분기처리하�
 />
 ```
 해당 data의 renderSection의 header부분은 renderSectionHeader를 통해서 추가 가능
+
+
+## 2. SectionList의 refreshControl
+```js
+const [refreshing, setRefreshing] = useState(false)
+
+const onRefresh = () => {
+    setRefreshing(true);
+}
+
+useEffect(() => {
+    if(refreshing){
+        setTimeout(() => {
+            // 실제 로직이라면 api refetch가 완료되는 순간 setRefreshing(false)
+            setRefreshing(false)
+        }, 3000)
+    }
+}, [refreshing])
+
+...
+<ScrollView
+    refreshControl={
+        <RefreshControl 
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+        />
+    }
+>
+    <Text>Text..</Text>
+</ScrollView>
+```
+
